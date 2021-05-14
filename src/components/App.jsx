@@ -12,7 +12,7 @@ export default function App(props){
 
     useEffect(()=>{
         let intervalId = setInterval(() => {getData()}, 60000)
-        return () => clearInterval(intervalId)  
+        return () => clearInterval(intervalId)
     }, [])
 
     async function getData(){
@@ -20,13 +20,22 @@ export default function App(props){
         let data = await response.json()
         data = data.map(val => ({percentageChange: val.price_change_percentage_24h_in_currency, name: val.name, image: val.image, currentPrice: val.current_price}))
         setData(data)
+        setLoading(false)
         // console.log(data)
     }
     return (
         <CryptoContext.Provider value = {{data: data, wallet: wallet, changeWallet: setWallet, portfolio: portfolio, changePortfolio: setPortfolio}}>
         <div className="app">
-            <Header />
-            <ListOfCurrencies />
+            {loading && <h1> Loading...</h1>}
+
+            {
+               !loading && <>
+                   <Header />
+                   <ListOfCurrencies />
+
+               </>
+            }
+
         </div>
         </CryptoContext.Provider>
     )
