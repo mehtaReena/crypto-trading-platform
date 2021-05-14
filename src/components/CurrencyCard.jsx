@@ -3,7 +3,7 @@ import CryptoContext from '../contexts/CryptoContext'
 
 function CurrencyCard(props) {
 
-    let [data, setData]  = useContext(CryptoContext);
+    
     return (
 
         <div className='CurrencyCard'>

@@ -1,10 +1,11 @@
-import {useContext} from "react"
+import {useContext, useEffect} from "react"
 import CryptoContext from '../contexts/CryptoContext'
 
-export default function Header(props){
-    // let [data, setData] = useState([])
-    let {wallet, portfolio, changePortfolio} = useContext(CryptoContext)
-    console.log(wallet, portfolio)
+export default function Header(){
+    let {wallet, portfolio} = useContext(CryptoContext)
+
+    useEffect(() =>{},[wallet, portfolio])
+
     return (
         <div className="header">
             <h1>Earn some Virtual Money 💰</h1>
