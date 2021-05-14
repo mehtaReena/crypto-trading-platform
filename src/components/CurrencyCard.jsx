@@ -3,16 +3,18 @@ import CryptoContext from '../contexts/CryptoContext'
 
 function CurrencyCard(props) {
 
-    let [data, setData]  = useContext(CryptoContext);
+    let {data,wallet,changeWallet,portfolio , changePortfolio}  = useContext(CryptoContext);
+    console.log(data)
+
     return (
 
         <div className='CurrencyCard'>
-            <img src='' alt="bitcoin"></img>
-            <div className='Currency-info'>
+            <img src={data.image} alt="bitcoin"></img>
+            <div className='card-inf0'>
 
-                <h2>{'props.currencyValue'}   </h2>
-                <p> {'props.currencyType'}</p>
-                <p> last24h {'props.latest'}</p>
+                <h2>{data.name}   </h2>
+                <p> {data.percentageChange}</p>
+                <p> last24h {data.currentPrice}</p>
 
 
             </div>
