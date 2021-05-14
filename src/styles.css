@@ -24,15 +24,18 @@ body {
 
 /* card CSS */
 
-.listofcurrencies{
+.listofcurrencies {
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
     gap:2rem;
     position: relative;
+=======
+    gap: 2rem;
+>>>>>>> cfc2361df0420a0f0b29da26cf717582dcce970b
 }
 
 .currencycard {
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -43,10 +46,13 @@ body {
     border-radius: 12px;
     border-radius: 9px;
     justify-items: center;
+<<<<<<< HEAD
     background-color: rgb(255,255,255);
     width:30vw;
 
 
+=======
+>>>>>>> cfc2361df0420a0f0b29da26cf717582dcce970b
 }
 
 
@@ -55,9 +61,10 @@ body {
     display: flex;
     flex-direction: row;
 }
-img{
-  height:80%;
-  width:80%;
+
+img {
+    height: 80%;
+    width: 80%;
 }
 
 img {
@@ -161,5 +168,11 @@ input[type=number]::-webkit-inner-spin-button {
     box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.39);
     padding: 10px;
     border-radius: 12px;
-    background-color: rgb(255,255,255);
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
