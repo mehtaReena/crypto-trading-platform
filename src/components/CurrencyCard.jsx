@@ -4,7 +4,8 @@ function CurrencyCard(props) {
     return (
 
         <div className='CurrencyCard'>
-            <img src={'props.image'} alt=""></img>
+            <img src='../images/bitcoin.png' alt="bitcoin"></img>
+
             <div className='Currency-info'>
 
                 <h2>{'props.currencyValue'}   </h2>
