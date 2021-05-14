@@ -3,7 +3,8 @@
 function CurrencyCard(props) {
 
     function clickHandler(){
-        props.method(props.index)
+
+        props.method(props.index);
 
     }
 

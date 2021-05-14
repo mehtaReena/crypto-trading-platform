@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import CryptoContext from '../contexts/CryptoContext'
 import CurrencyCard from "./CurrencyCard";
 
@@ -6,11 +6,15 @@ import CurrencyCard from "./CurrencyCard";
 export default function ListOfCurrencies(props) {
 
     let { data, wallet, changeWallet, portfolio, changePortfolio } = useContext(CryptoContext);
-
+    let [show, setShow ]=useState('none')
 
     function showDialog(index) {
         console.log("ListOfCurrencies  :" + index)
+        setShow('flex%')
 
+    }
+    function closedialog(){
+        setShow('none');
 
     }
     return (
@@ -33,12 +37,12 @@ export default function ListOfCurrencies(props) {
                 )
             }
 
-            <div className='dialogbox'>
+            <div className='dialogbox' style={{display: show}}>
                 <div className='dialog-header'>
                     <div >
 
                     </div>
-                    <div> X </div>
+                    <div className='close' onClick={closedialog}> ❌ </div>
                 </div>
                 <div className='dialog-content'>
                     <span> Current price:</span>
