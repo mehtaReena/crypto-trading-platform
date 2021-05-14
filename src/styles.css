@@ -23,14 +23,13 @@ body {
 
 /* card CSS */
 
-.listofcurrencies{
+.listofcurrencies {
     display: flex;
     justify-content: center;
-    gap:2rem;
+    gap: 2rem;
 }
 
 .currencycard {
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -38,17 +37,16 @@ body {
     border: 2px solid black;
     border-radius: 9px;
     justify-items: center;
-
-
 }
 
 .listofcurrencies {
     display: flex;
     flex-direction: row;
 }
-img{
-  height:80%;
-  width:80%;
+
+img {
+    height: 80%;
+    width: 80%;
 }
 
 img {
@@ -95,4 +93,11 @@ img {
     box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.39);
     padding: 10px;
     border-radius: 12px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
