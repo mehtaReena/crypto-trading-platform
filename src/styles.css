@@ -65,6 +65,7 @@ img {
     width: 50%;
     gap: 20px;
     height: 400px;
+    overflow-y: auto;
 }
 
 .holding,
