@@ -7,6 +7,7 @@ We will be making a fully functional trading simulator. You should be able to:
 - See your holdings
 - See your order history
 
+[API Used](https://www.coingecko.com/en/api#explore-api)
 
 ## Discussion points (Needs to be filled by your team):
 - What are the components you will be creating?
