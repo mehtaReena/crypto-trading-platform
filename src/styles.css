@@ -27,12 +27,7 @@ body {
 .listofcurrencies {
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
-    gap:2rem;
-    position: relative;
-=======
     gap: 2rem;
->>>>>>> cfc2361df0420a0f0b29da26cf717582dcce970b
 }
 
 .currencycard {
