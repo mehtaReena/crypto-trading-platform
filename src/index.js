@@ -5,9 +5,8 @@ import './styles.css'
 
 ReactDOM.render(
 
-    <App/>,
+    <
+    App / > ,
 
-  document.getElementById('root')
+    document.getElementById('root')
 );
-
-
