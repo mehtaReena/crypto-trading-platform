@@ -7,7 +7,7 @@ export default function CurrentHoldings(){
     return (
         <div className="current-holdings">
             <h1>Current Holdings</h1>
-            {portfolio.map((coin,idx) => <Holding coin = {coin} data = {data}/>)}
+            {portfolio.map((coin,idx) => <Holding coin = {coin} data = {data} key = {idx}/>)}
         </div>
     )
 }
