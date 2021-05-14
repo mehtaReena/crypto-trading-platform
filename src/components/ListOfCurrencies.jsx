@@ -6,10 +6,12 @@ import CurrencyCard from "./CurrencyCard";
 export default function ListOfCurrencies(props) {
 
     let { data, wallet, changeWallet, portfolio, changePortfolio } = useContext(CryptoContext);
-    console.log(" CurrencyCard  :" + data[0].name)
-    data.forEach((item)=>{
-        console.log(item.name)
-    })
+
+
+    function showDialog(index){
+       console.log("ListOfCurrencies  :" + index)
+
+    }
     return (
 
         <div className="listofcurrencies">
@@ -21,27 +23,26 @@ export default function ListOfCurrencies(props) {
                  percentageChange={item.percentageChange}
                  currentPrice={item.currentPrice}
                  image={item.image}
+                 method={showDialog}
+                 key={idx}
+                 index={idx}
+
                 />
 
-
-
-
-
-
                 )
-
-
-
-
-
-
-
-
-
-
-
-
             }
+
+            <div style={{ top:'-23000'}} >
+               <div>
+                   <p></p>
+                   <div> X </div>
+                   <div>
+                       <input type="text" name="" id="" />
+                       <input type="radio" />
+                   </div>
+              </div>
+
+            </div>
 
         </div>
     )
