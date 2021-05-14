@@ -3,6 +3,7 @@ import Header from "./Header";
 import ListOfCurrencies from './ListOfCurrencies'
 import {useContext} from 'react'
 import CryptoContext from '../contexts/CryptoContext'
+import DisplayBoard from "./DisplayBoard";
 
 export default function App(props){
     let [loading, setLoading] = useState(true)
@@ -11,7 +12,7 @@ export default function App(props){
     let [portfolio, setPortfolio] = useState([{name: 'Bitcoin', currentHolding: 0, paid: 0},{name: 'Ethereum', currentHolding: 0, paid: 0},{name: 'Dogecoin', currentHolding: 0, paid: 0}])
 
     useEffect(()=>{
-        let intervalId = setInterval(() => {getData()}, 60000)
+        let intervalId = setInterval(() => {getData()}, 2000)
         return () => clearInterval(intervalId)
     }, [])
 
@@ -32,7 +33,7 @@ export default function App(props){
                !loading && <>
                    <Header />
                    <ListOfCurrencies />
-
+                    <DisplayBoard />
                </>
             }
 
