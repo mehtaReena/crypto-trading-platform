@@ -8,6 +8,18 @@
 
 body{
 
+    font-family: 'Poppins' ,sans-serif;
+    width: 100%;
+    height: 100vh;
+}
 
-    font-family: sans-serif;
+
+.app{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+
 }
