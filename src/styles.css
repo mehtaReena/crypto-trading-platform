@@ -9,6 +9,8 @@ body {
     font-family: 'Poppins', sans-serif;
     width: 100%;
     height: 100vh;
+    background-image: url('/images/bg.svg');
+
 }
 
 .app {
@@ -18,3 +20,33 @@ body {
     align-items: center;
     width: 100%;
 }
+
+/* card CSS */
+.currencycard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:2rem;
+    border: 2px solid black;
+    border-radius: 9px;
+
+
+}
+
+.listofcurrencies{
+    display: flex;
+    flex-direction: row;
+}
+img{
+  height: 100%;
+  width:100%;
+}
+
+.currencyImage{
+
+    display: flex;
+    object-fit: cover;
+    width:2rem;
+    height: 2rem;
+}
+
