@@ -10,15 +10,12 @@ export default function ListOfCurrencies(props) {
 
     function showDialog(index) {
         console.log("ListOfCurrencies  :" + index)
-
-
     }
+
     return (
-
         <div className="listofcurrencies">
-
-            {
-                data.map((item, idx) =>
+            { 
+            data.map((item, idx) =>
                     <CurrencyCard
                         name={item.name}
                         percentageChange={item.percentageChange}
