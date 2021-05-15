@@ -98,11 +98,11 @@ export default function ListOfCurrencies(props) {
                     <div >
                         {tradingOption + " " + currName}
                     </div>
-                    <div className='close' onClick={closedialog}> ❌ </div>
+                    <div className='close' onClick={closedialog}>✖️ </div>
                 </div>
                 <div className='dialog-content'>
                     <span> Current price: {currPrice}</span>
-                    <div className='number-input'><input type="number" name="qty" id="qty" min="0" step="1" onChange={changeInput} /><span>Max: {wallet}</span></div>
+                    <div className='number-input'><input type="number" name="qty" id="qty" min="0" value={qty}step="1" onChange={changeInput} /><span>Max: {wallet}</span></div>
                     <div className='message'><span>{tradingOption === 'Buy' ? ' you will be charged $' + charged : 'you will received $' + received} </span></div>
                     <div className='TardingOption' id='options' >
 

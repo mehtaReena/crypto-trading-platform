@@ -116,8 +116,11 @@ img {
     background-color: #2E2E2E;
     color: white;
     justify-content: space-between;
-    height: 1.5rem;
+    height: 2rem;
     flex-direction: row;
+    font-size: 14px;
+    font-weight: bold;
+    justify-items: center;
 }
 
 .display-board {
@@ -185,6 +188,10 @@ input[type=number]::-webkit-inner-spin-button {
 .message{
     font-size: 9px
 }
+.close{
+    padding-right: 7px;
+}
+
 
 
 
