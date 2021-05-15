@@ -1,6 +1,10 @@
-
+import { useContext, useState } from "react"
+import { ViewContext } from '../contexts/CryptoContext';
 
 function CurrencyCard(props) {
+
+    const {disable} = useContext(ViewContext);
+    let[   disableCard ,setDisableCard  ]=disable;
 
     function clickHandler(){
 
@@ -8,10 +12,16 @@ function CurrencyCard(props) {
 
     }
 
+
+    const rightToggleStyle = {
+
+        cursor: (disableCard) ? 'none' : ''
+
+     };
 //    console.log(  "CurrencyCard " + props)
 
     return (
-        <div className='currencycard'  onClick={clickHandler}>
+        <div className='currencycard'  style={rightToggleStyle}  onClick={clickHandler}>
             <div className='currencyImage'>
             <img src={props.image} alt="bitcoin"></img>
             </div>
