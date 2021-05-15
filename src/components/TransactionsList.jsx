@@ -1,5 +1,5 @@
 import {useContext, useEffect} from 'react'
-import CryptoContext from '../contexts/CryptoContext'
+import {CryptoContext} from '../contexts/CryptoContext'
 import Transaction from './Transaction'
 
 export default function TransactionsList(){

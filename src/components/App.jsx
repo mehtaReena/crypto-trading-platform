@@ -2,18 +2,19 @@ import { useEffect, useState } from "react";
 import Header from "./Header";
 import ListOfCurrencies from './ListOfCurrencies'
 import { useContext } from 'react'
-import CryptoContext from '../contexts/CryptoContext'
+import {CryptoContext , ViewContext} from '../contexts/CryptoContext'
 import DisplayBoard from "./DisplayBoard";
 
 export default function App(props) {
     let [loading, setLoading] = useState(true)
     let [data, setData] = useState([])
     let [wallet, setWallet] = useState(100);
+    let [display, setDisplay] = useState('none');
     let [transactions, setTransactions] = useState([{name: 'Bitcoin', qty: 0.0005, currentPrice: 49000, transactiontype: 'buy', value: 24.5, timeStamp: Date.now()}])  //{proforma for individual value: {name: , qty: , currentPrice: , transactiontype: , value: , timeStamp:}
     let [portfolio, setPortfolio] = useState([{ name: 'Bitcoin', currentHolding: 0, paid: 0 }, { name: 'Ethereum', currentHolding: 0, paid: 0 }, { name: 'Dogecoin', currentHolding: 0, paid: 0 }])
 
     useEffect(() => {
-        let intervalId = setInterval(() => { getData() }, 30000)
+        let intervalId = setInterval(() => { getData() }, 10000)
         return () => clearInterval(intervalId)
     }, [])
 
@@ -28,6 +29,7 @@ export default function App(props) {
 
     }
     return (
+        <ViewContext.Provider value={[display, setDisplay] }>
         <CryptoContext.Provider value={{transactions: transactions, changeTransactions: setTransactions,  data: data, wallet: wallet, changeWallet: setWallet, portfolio: portfolio, changePortfolio: setPortfolio }}>
             <div className="app">
                 {loading && <h1> Loading...</h1>}
@@ -42,6 +44,7 @@ export default function App(props) {
 
             </div>
         </CryptoContext.Provider>
+        </ViewContext.Provider>
     )
 }
 

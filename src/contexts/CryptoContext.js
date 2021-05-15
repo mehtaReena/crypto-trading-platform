@@ -1,5 +1,6 @@
 import { createContext, } from 'react'
 
-let CryptoContext = createContext()
+export const CryptoContext = createContext()
+export const ViewContext= createContext('')
 
-export default CryptoContext
+//  export default CryptoContext

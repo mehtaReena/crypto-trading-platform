@@ -4,7 +4,7 @@ function CurrencyCard(props) {
 
     function clickHandler(){
 
-        props.method(props.index);
+        props.method(props.index, props.name ,props.currentPrice);
 
     }
 
@@ -14,11 +14,11 @@ function CurrencyCard(props) {
             <div className='currencyImage'>
             <img src={props.image} alt="bitcoin"></img>
             </div>
-            <div className='card-inf0'   >
+            <div className='card-info'   >
 
-                <h3> {(props.percentageChange).toFixed(5)}</h3>
+                <h3> {(props.currentPrice).toFixed(5)}</h3>
                 <h4>{props.name}   </h4>
-                <p> last24h {props.currentPrice}</p>
+                <p> last24h {(props.percentageChange).toFixed(5)}</p>
 
 
             </div>

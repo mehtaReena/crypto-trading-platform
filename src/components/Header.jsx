@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import CryptoContext from '../contexts/CryptoContext'
+import {CryptoContext} from '../contexts/CryptoContext'
 
 export default function Header() {
     let { data, wallet, portfolio } = useContext(CryptoContext)
@@ -8,7 +8,7 @@ export default function Header() {
     let getCurrentPrice = (name) => {
         return data.filter(coin => coin.name.toLowerCase() === name.toLowerCase())[0].currentPrice
     }
-    
+
     return (
         <div className="header">
             <h1>Earn some Virtual Money 💰</h1>

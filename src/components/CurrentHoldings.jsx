@@ -1,5 +1,5 @@
 import {useContext} from 'react'
-import CryptoContext from '../contexts/CryptoContext'
+import {CryptoContext} from '../contexts/CryptoContext'
 import Holding from './Holding'
 
 export default function CurrentHoldings(){

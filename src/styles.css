@@ -75,8 +75,8 @@ img {
 
 /* dialogbox CSS */
 .dialogbox{
-     position: absolute;
-    top:-2000px;
+    /*  position: absolute;
+    top:-2000px; */
     border:2px solid black;
     width:50%;
     height: 90%;
@@ -89,7 +89,7 @@ img {
 
 .dialog-header{
     display: flex;
-    background-color: black;
+    background-color: #2E2E2E;
     color: white;
     justify-content: space-between;
     height: 1.5rem;
@@ -118,6 +118,7 @@ img {
     padding: 10px;
     flex-direction: column;
     font-weight: bold;
+    font-size: .8rem;
 }
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1;
@@ -132,6 +133,21 @@ input[type=number]::-webkit-inner-spin-button {
 .close{
     color: white;
 }
+
+.button{
+    display: flex;
+    text-transform: uppercase;
+    color:whitesmoke;
+    background-color:  #2E2E2E;
+    padding: .4rem;
+    font-size: .7rem;
+    font-weight: bold;
+    width:25%;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid rgb(1, 1, 39);
+    margin-top: 10px;
+  }
 
 
 .current-holdings,
