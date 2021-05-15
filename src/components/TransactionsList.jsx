@@ -9,7 +9,8 @@ export default function TransactionsList(){
     return(
         <div className="transactions-list">
             <h1>Transactions</h1>
-            {transactions.map((transaction, idx) => <Transaction value ={transaction} key = {idx}/>)}
+            {!transactions.length && <p>No transactions yet...</p>}
+            {transactions.length && transactions.map((transaction, idx) => <Transaction value ={transaction} key = {idx}/>)}
         </div>
     )
 }

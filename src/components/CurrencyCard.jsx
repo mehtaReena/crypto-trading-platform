@@ -8,7 +8,8 @@ function CurrencyCard(props) {
 
     }
 
-   console.log(  "CurrencyCard " + props)
+//    console.log(  "CurrencyCard " + props)
+
     return (
         <div className='currencycard'  onClick={clickHandler}>
             <div className='currencyImage'>
@@ -22,9 +23,6 @@ function CurrencyCard(props) {
 
 
             </div>
-
-
-
         </div>
     )
 

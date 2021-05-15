@@ -34,17 +34,13 @@ export default function ListOfCurrencies(props) {
 
 
     return (
-
-        <div className="listofcurrencies">
-
+      <div className="listofcurrencies">
             {
-                data.map((item, idx) =>
-
+            data.map((item, idx) =>
                     <CurrencyCard
                         name={item.name}
                         percentageChange={item.percentageChange}
                         currentPrice={item.currentPrice}
-
                         image={item.image}
                         method={showDialog}
                         key={idx}

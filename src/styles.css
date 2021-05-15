@@ -10,7 +10,11 @@ body {
     font-family: 'Poppins', sans-serif;
     width: 100%;
     height: 100vh;
-    padding: 20px   ;
+    padding: 20px;
+}
+
+img {
+    width: 100%;
 }
 
 .app {
@@ -28,37 +32,54 @@ body {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    width: 70%;
 }
 
 .currencycard {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: rgb(255,255,255);
-    gap: 1rem;
-    box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.39);
-    padding: 10px;
-    border-radius: 12px;
+    justify-content: flex-start;
+    gap: 2rem;
+    border: none;
     border-radius: 9px;
-    justify-items: center;
+    align-items: center;
+    width: 30%;
+    height: fit-content;
+    padding: 10px;
+    box-shadow: 0px 5px 6px rgba(128, 128, 128, 0.363);
+}
+
+.currencycard:hover {
+    transform: scale(1.1);
+}
+
+.currencycard img {
+    width: 60px;
+    height: 60px;
+}
+
+.card-info {
+    font-size: 20px;
+    font-weight: 600;
+    gap: 5px;
+    padding: 10px;
+}
+
+.card-info p:first-of-type {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.card-info p:last-of-type {
+    font-size: 12px;
+    font-weight: 200;
+    ;
 }
 
 
-
-.listofcurrencies {
-    display: flex;
-    flex-direction: row;
-}
-
-img {
-    height: 80%;
-    width: 80%;
-}
-
-img {
+/* img {
     height: 100%;
     width: 100%;
-}
+} */
 
 .currencyImage {
     display: flex;
@@ -71,8 +92,6 @@ img {
 }
 
 
-
-
 /* dialogbox CSS */
 .dialogbox{
     /*  position: absolute;
@@ -82,12 +101,10 @@ img {
     height: 90%;
     display: flex;
     flex-direction: column;
-    background-color: rgb(255,255,255);
-
-
+    background-color: rgb(255, 255, 255);
 }
 
-.dialog-header{
+.dialog-header {
     display: flex;
     background-color: #2E2E2E;
     color: white;
@@ -102,36 +119,37 @@ img {
     justify-content: center;
     align-items: center;
 }
-.TardingOption{
+
+.TardingOption {
     display: flex;
     flex-direction: column;
 }
-.option{
+
+.option {
     display: flex;
     flex-direction: row;
-    gap:1rem;
+    gap: 1rem;
     justify-items: center;
     align-items: center;
 }
-.dialog-content{
+
+.dialog-content {
     display: flex;
     padding: 10px;
     flex-direction: column;
     font-weight: bold;
     font-size: .8rem;
 }
+
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1;
-    width:2rem;
+    width: 2rem;
+}
 
-  }
-  .number-input{
-      display: flex;
-      flex-direction: row;
-      gap:1rem;
-  }
-.close{
-    color: white;
+.number-input {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .button{
@@ -160,7 +178,6 @@ input[type=number]::-webkit-inner-spin-button {
     gap: 20px;
     height: 400px;
     overflow-y: auto;
-
 }
 
 .holding,
@@ -170,10 +187,10 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: flex-start;
     flex-direction: column;
     width: 80%;
-    box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.39);
+    box-shadow: 0px 5px 6px rgba(128, 128, 128, 0.363);
     padding: 10px;
     border-radius: 12px;
-    background-color: rgb(255,255,255);
+    background-color: rgb(255, 255, 255);
 }
 
 .header {
@@ -181,4 +198,27 @@ input[type=number]::-webkit-inner-spin-button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.header h3,
+.header h1,
+.header p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.header h1 img {
+    width: 50px;
+}
+
+.header p img {
+    width: 20px;
+}
+
+.header h3 img {
+    width: 22px;
 }
