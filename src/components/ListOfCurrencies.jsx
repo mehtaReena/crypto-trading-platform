@@ -9,6 +9,7 @@ export default function ListOfCurrencies(props) {
     let { data, wallet, changeWallet, portfolio, changePortfolio } = useContext(CryptoContext);
     const [view, setView] = useContext(ViewContext);
     let [currName, setCurrName] = useState('');
+    let [amount, setAmount] = useState('');
     let [currPrice, setCurrPrice] = useState('');
     let [tradingOption, setTradingOption] = useState('Buy')
 
@@ -24,11 +25,29 @@ export default function ListOfCurrencies(props) {
         setView('none');
     }
     function changeHandler(e) {
+        if((e.target.value==='Buy')||(e.target.value==='Sell'))
         setTradingOption(e.target.value);
+        if(e.target.id==='amount'){
+            setAmount(e.target.value)
+
+        }
+
+
 
 
     }
     function clickHandler(){
+       if(tradingOption==='Buy'){
+           console.log(Number(amount*currPrice))
+           console.log(wallet-amount*currPrice)
+           // changeWallet:wallet-amount*currPrice;
+
+       }
+       if(tradingOption==='Sell'){
+        console.log(Number(amount*currPrice))
+        console.log(wallet+amount*currPrice)
+
+       }
 
 
     }
@@ -61,7 +80,7 @@ export default function ListOfCurrencies(props) {
                 </div>
                 <div className='dialog-content'>
                     <span> Current price: {currPrice}</span>
-                    <div className='number-input'><input type="number" name="amount" id="" min="0" /><span>Max: {wallet}</span></div>
+                    <div className='number-input'><input type="number" name="amount" id="amount" min="0"  onChange={changeHandler} /><span>Max: {wallet}</span></div>
                     <span> </span>
                     <div className='TardingOption' id='options' >
 

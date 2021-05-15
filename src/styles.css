@@ -127,6 +127,7 @@ img {
 .TardingOption {
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
 }
 
 .option {
@@ -160,7 +161,7 @@ input[type=number]::-webkit-inner-spin-button {
     display: flex;
     text-transform: uppercase;
     color:whitesmoke;
-    background-color:  #2E2E2E;
+    background-color: #A3A3A3;
     padding: .4rem;
     font-size: .7rem;
     font-weight: bold;
@@ -170,6 +171,12 @@ input[type=number]::-webkit-inner-spin-button {
     border: 1px solid rgb(1, 1, 39);
     margin-top: 10px;
   }
+
+  .button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: #2E2E2E;
+}
 
 
 .current-holdings,
