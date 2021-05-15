@@ -10,6 +10,7 @@ export default function App(props) {
     let [data, setData] = useState([])
     let [wallet, setWallet] = useState(100);
     let [display, setDisplay] = useState('none');
+    let [isdisable , setDisble]=useState(false)
     let [transactions, setTransactions] = useState([{name: 'Bitcoin', qty: 0.0005, currentPrice: 49000, transactiontype: 'buy', value: 24.5, timeStamp: Date.now()}])  //{proforma for individual value: {name: , qty: , currentPrice: , transactiontype: , value: , timeStamp:}
     let [portfolio, setPortfolio] = useState([{ name: 'Bitcoin', currentHolding: 0, paid: 0 }, { name: 'Ethereum', currentHolding: 0, paid: 0 }, { name: 'Dogecoin', currentHolding: 0, paid: 0 }])
 
@@ -28,10 +29,15 @@ export default function App(props) {
         setLoading(false)
 
     }
+
+    const rightToggleStyle = {
+        backgroundColor: (isdisable) ? '#A3A3A37D' : ''
+     };
+
     return (
-        <ViewContext.Provider value={[display, setDisplay] }>
+        <ViewContext.Provider value={{dialog :[display, setDisplay] ,disable:[isdisable , setDisble]} }>
         <CryptoContext.Provider value={{transactions: transactions, changeTransactions: setTransactions,  data: data, wallet: wallet, changeWallet: setWallet, portfolio: portfolio, changePortfolio: setPortfolio }}>
-            <div className="app">
+            <div className="app"  style={rightToggleStyle}>
                 {loading && <h1> Loading...</h1>}
 
                 {

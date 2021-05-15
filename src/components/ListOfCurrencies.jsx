@@ -6,29 +6,37 @@ import { CryptoContext, ViewContext } from '../contexts/CryptoContext';
 
 export default function ListOfCurrencies(props) {
 
-    let { data, wallet, changeWallet, portfolio, changePortfolio } = useContext(CryptoContext);
-    const [view, setView] = useContext(ViewContext);
+    let { data, wallet, changeWallet, portfolio, changePortfolio ,changeTransactions} = useContext(CryptoContext);
+    const {dialog} = useContext(ViewContext);
+    const {disable} = useContext(ViewContext);
     let [currName, setCurrName] = useState('');
-    let [amount, setAmount] = useState('');
+    let [qty, setQty] = useState('');
     let [currPrice, setCurrPrice] = useState('');
-    let [tradingOption, setTradingOption] = useState('Buy')
+    let [tradingOption, setTradingOption] = useState('Buy');
+    let[   view ,setView  ]=dialog;
+    let[   background ,setbg  ]=disable;
+
+
 
     function showDialog(index, currency ,currPrice) {
         console.log("ListOfCurrencies  :" + index)
         setView('flex');
         setCurrName(currency);
         setCurrPrice(currPrice);
+        setbg(true)
 
 
     }
     function closedialog() {
         setView('none');
+        setbg(false)
+
     }
     function changeHandler(e) {
         if((e.target.value==='Buy')||(e.target.value==='Sell'))
         setTradingOption(e.target.value);
-        if(e.target.id==='amount'){
-            setAmount(e.target.value)
+        if(e.target.id==='qty'){
+            setQty(e.target.value)
 
         }
 
@@ -38,14 +46,15 @@ export default function ListOfCurrencies(props) {
     }
     function clickHandler(){
        if(tradingOption==='Buy'){
-           console.log(Number(amount*currPrice))
-           console.log(wallet-amount*currPrice)
-           // changeWallet:wallet-amount*currPrice;
-
+           console.log(Number(qty*currPrice))
+           console.log(wallet-qty*currPrice)
+           console.log("changeWallet "+  changeWallet)
+           changeWallet=wallet-qty*currPrice;
+           changeTransactions=[{name: {currName}, qty: {qty}, currentPrice: {currPrice}, transactiontype: {tradingOption}, value: 24.5, timeStamp: Date.now()}];
        }
        if(tradingOption==='Sell'){
-        console.log(Number(amount*currPrice))
-        console.log(wallet+amount*currPrice)
+        console.log(Number(qty*currPrice))
+        console.log(wallet+qty*currPrice)
 
        }
 
@@ -80,7 +89,7 @@ export default function ListOfCurrencies(props) {
                 </div>
                 <div className='dialog-content'>
                     <span> Current price: {currPrice}</span>
-                    <div className='number-input'><input type="number" name="amount" id="amount" min="0"  onChange={changeHandler} /><span>Max: {wallet}</span></div>
+                    <div className='number-input'><input type="number" name="qty" id="qty" min="0"  step="1"  onChange={changeHandler} /><span>Max: {wallet}</span></div>
                     <span> </span>
                     <div className='TardingOption' id='options' >
 
