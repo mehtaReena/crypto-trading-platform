@@ -157,7 +157,8 @@ input[type=number]::-webkit-inner-spin-button {
 .number-input {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+     margin-top: 5px;
+     gap:.6rem;
 }
 
 .button{
@@ -180,6 +181,11 @@ input[type=number]::-webkit-inner-spin-button {
     cursor: pointer;
     background-color: #2E2E2E;
 }
+
+.message{
+    font-size: 9px
+}
+
 
 
 .current-holdings,
