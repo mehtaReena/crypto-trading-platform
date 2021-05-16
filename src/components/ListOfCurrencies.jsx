@@ -54,10 +54,19 @@ export default function ListOfCurrencies(props) {
             changeWallet(wallet - qty * currPrice);
             let newTransaction = [...transactions]
 
-            newTransaction.push({ name: currency, qty: qty, currentPrice: currPrice, transactionType: tradingOption.toLowerCase(), value: 24.5, timeStamp: Date.now() });
+            newTransaction.push({ name: currency, qty: qty, currentPrice: currPrice, transactionType: tradingOption.toLowerCase(), value: 24.5, timeStamp: getTimeStamp() });
             changeTransactions(newTransaction);
         }
 
+        function getTimeStamp() {
+            let date = new Date()
+            let currentDate = date.getDate()
+            let currentMonth = Number(date.getMonth()) + 1
+            let hours = date.getHours()
+            let minutes = date.getMinutes()
+            let seconds = date.getSeconds()
+            return (currentDate.length === 1 ? '0' + currentDate : currentDate) + '/' + (currentMonth < 10 ? '0' + currentMonth : currentMonth) + '/' + date.getFullYear() + ', ' + (hours.length === 1 ? '0' + hours : hours) + ':' + (minutes.length === 1 ? '0' + minutes : minutes) + ':' + (seconds.length === 1 ? '0' + seconds : seconds)
+        }
 
         if (tradingOption === 'Sell') {
 
