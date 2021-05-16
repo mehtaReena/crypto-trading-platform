@@ -34,10 +34,10 @@ export default function ListOfCurrencies(props) {
 
     }
     function changeHandler(e) {
-            setTradingOption(e.target.value);
+        setTradingOption(e.target.value);
     }
     function changeInput(e) {
-            setQty(e.target.value)
+        setQty(e.target.value)
 
     }
 
@@ -65,7 +65,7 @@ export default function ListOfCurrencies(props) {
             let hours = date.getHours()
             let minutes = date.getMinutes()
             let seconds = date.getSeconds()
-            return (currentDate.length === 1 ? '0' + currentDate : currentDate) + '/' + (currentMonth < 10 ? '0' + currentMonth : currentMonth) + '/' + date.getFullYear() + ', ' + (hours.length === 1 ? '0' + hours : hours) + ':' + (minutes.length === 1 ? '0' + minutes : minutes) + ':' + (seconds.length === 1 ? '0' + seconds : seconds)
+            return (currentDate < 10 ? '0' + currentDate : currentDate) + '/' + (currentMonth < 10 ? '0' + currentMonth : currentMonth) + '/' + date.getFullYear() + ', ' + (hours < 10 ? '0' + hours : hours) + ':' + (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds)
         }
 
         if (tradingOption === 'Sell') {
