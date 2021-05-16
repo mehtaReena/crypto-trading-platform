@@ -34,6 +34,7 @@ img {
     justify-content: center;
     gap: 2rem;
     width: 70%;
+    position: relative;
 
 
 }
@@ -79,6 +80,18 @@ img {
     font-weight: 200;
     ;
 }
+.dialogWrapper{
+    display: flex;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.418);
+    width:100vw;
+    height:100vh;
+    justify-content: center;
+    align-items: center;
+    top:-250px;
+
+}
+
 
 
 /* img {
@@ -99,7 +112,7 @@ img {
 
 /* dialogbox CSS */
 .dialogbox{
-    position: absolute;
+    /* position: absolute; */
      /* top:-2000px; */
     border:2px solid black;
     width:30%;

@@ -4,7 +4,7 @@ import Holding from './Holding'
 
 export default function CurrentHoldings(){
     let {data, portfolio} = useContext(CryptoContext)
-    let activeHoldings = portfolio.filter(coin => coin.currenHolding>0)
+    let activeHoldings = portfolio.filter(coin => coin.currentHolding>0)
     return (
         <div className="current-holdings">
             <h1>Current Holdings</h1>

@@ -6,7 +6,7 @@ function CurrencyCard(props) {
     const {disable} = useContext(ViewContext);
     let[disableCard ,setDisableCard  ]=disable;
     let theme='transparent'
-     props.percentageChange >0 ?theme= 'green' : theme='red'
+     props.percentageChange >0 ?theme= '#13C804' : theme='red'
 
     function clickHandler(){
 
@@ -20,7 +20,7 @@ function CurrencyCard(props) {
         cursor: (disableCard) ? 'none' : ''
 
      };
-//    console.log(  "CurrencyCard " + props)
+
 
     return (
         <div className='currencycard'  style={rightToggleStyle}  onClick={clickHandler}>
@@ -31,7 +31,7 @@ function CurrencyCard(props) {
 
                 <h3> {(props.currentPrice).toFixed(5)}</h3>
                 <h4>{props.name}   </h4>
-                <p style={{color: theme}}> last24h {(props.percentageChange).toFixed(5) }</p>
+                <p className ='percentageChange' style={{color: theme}}> last24h {(props.percentageChange).toFixed(5) }</p>
 
 
             </div>
