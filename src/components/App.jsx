@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import ListOfCurrencies from './ListOfCurrencies'
-import { useContext } from 'react'
+
 import {CryptoContext , ViewContext} from '../contexts/CryptoContext'
 import DisplayBoard from "./DisplayBoard";
 

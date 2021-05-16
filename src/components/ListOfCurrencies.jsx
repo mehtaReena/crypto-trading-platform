@@ -15,7 +15,9 @@ export default function ListOfCurrencies(props) {
     let [tradingOption, setTradingOption] = useState('Buy');
     let [view, setView] = dialog;
     let [background, setbg] = disable;
+    let[disabled,setdisabled]=useState(false);
 
+     let[maxValue,setMax]=useState('')
 
 
 
@@ -30,14 +32,20 @@ export default function ListOfCurrencies(props) {
     }
     function closedialog() {
         setView('none');
-        setbg(false)
+        setbg(false);
+        setQty(0);
 
     }
     function changeHandler(e) {
-            setTradingOption(e.target.value);
+        setTradingOption(e.target.value);
     }
     function changeInput(e) {
-            setQty(e.target.value)
+        setMax(e.target.nextElementSibling.innerHTML)
+        setQty(e.target.value)
+        if(qty>maxValue){
+            setdisabled(true)
+        }
+
 
     }
 
@@ -47,23 +55,65 @@ export default function ListOfCurrencies(props) {
 
     function clickHandler() {
         if (tradingOption === 'Buy') {
-            // setChargedAmt(Number(qty * currPrice).toFixed(4))
-            // console.log(wallet - qty * currPrice)
-            //console.log("changeWallet " + changeWallet)
-
+            let newTransaction = { name: currency, qty: qty, currentPrice: currPrice, transactiontype: tradingOption.toLowerCase(), value: (qty * currPrice).toFixed(2), timeStamp: Date.now() }
             changeWallet(wallet - qty * currPrice);
-            let newTransaction = [...transactions]
+            let currTransaction = [...transactions];
+            currTransaction.push(newTransaction);
+            changeTransactions(currTransaction);
 
-            newTransaction.push({ name: currency, qty: qty, currentPrice: currPrice, transactiontype: tradingOption.toLowerCase(), value: 24.5, timeStamp: Date.now() });
-            changeTransactions(newTransaction);
+            updatePortfolio(newTransaction, tradingOption)
         }
 
+        if (tradingOption === 'Sell') {
+            let newTransaction = { name: currency, qty: qty, currentPrice: currPrice, transactiontype: tradingOption.toLowerCase(), value: (qty * currPrice).toFixed(2), timeStamp: Date.now() }
+            changeWallet(wallet + qty * currPrice);
+            let currTransaction = [...transactions];
+            currTransaction.push(newTransaction);
+            changeTransactions(currTransaction);
+
+            updatePortfolio(newTransaction, tradingOption)
+
+
+        }
+
+        closedialog();
+
+
+    }
+
+
+    function updatePortfolio(newTransaction, tradingOption) {
+        let newPortfolio = { name: newTransaction.name, currentHolding: newTransaction.qty, paid: newTransaction.value };
+
+        if (tradingOption === 'Buy') {
+            let currentState = [...portfolio];
+            for (let i in currentState) {
+                // console.log(currentState[i].name + "    portfolio.name  " + newPortfolio.name)
+                if (currentState[i].name === newPortfolio.name) {
+                    currentState[i].currentHolding = Number(currentState[i].currentHolding) + Number(newPortfolio.currentHolding);
+                    currentState[i].paid = (Number(currentState[i].paid) + Number(newPortfolio.paid)).toFixed(2);
+                    changePortfolio(currentState => [...currentState]);
+                    break;
+
+                }
+            }
+
+        }
 
         if (tradingOption === 'Sell') {
+            let currentState = [...portfolio];
+            for (let i in currentState) {
+                // console.log(currentState[i].name + "    portfolio.name  " + newPortfolio.name)
+                if (currentState[i].name === newPortfolio.name) {
+                    if( currentState[i].currentHolding>0){
+                    currentState[i].currentHolding = Number(currentState[i].currentHolding) - Number(newPortfolio.currentHolding);
+                    currentState[i].paid = (Number(currentState[i].paid) + Number(newPortfolio.paid)).toFixed(2);
+                    changePortfolio(currentState => [...currentState]);
+                    }
+                    break;
 
-            // setReceviedAmt(Number(qty * currPrice).toFixed(4))
-            //console.log(Number(qty * currPrice))
-            //console.log(wallet + qty * currPrice)
+                }
+            }
 
         }
 
@@ -101,11 +151,11 @@ export default function ListOfCurrencies(props) {
                     </div>
                     <div className='dialog-content'>
                         <span> Current price: {currPrice}</span>
-                        <div className='number-input'><input type="number" name="qty" id="qty" min="0" value={qty} step="1" onChange={changeInput} /><span>
-                            Max: {tradingOption === 'Buy' ? (wallet / currPrice).toFixed(6) : portfolio.filter(coin => coin.name === currency)[0].currentHolding}
+                        <div className='number-input'><input type="number" name="qty" id="qty" min="0" value={qty} step="1" onChange={changeInput} />
+                        <span id='max'> Max: {tradingOption === 'Buy' ? (wallet / currPrice).toFixed(6) : portfolio.filter(coin => coin.name === currency)[0].currentHolding}
 
                         </span></div>
-                        <div className='message'><span>{tradingOption === 'Buy' ? ' you will be charged $' : 'you will received $'} </span> {qty * currPrice}</div>
+                        <div className='message'><span>{tradingOption === 'Buy' ? ' you will be charged $' : 'you will received $'} </span> {Number(qty * currPrice).toFixed(2)}</div>
                         <div className='TardingOption' id='options' >
 
                             <div className='option'> <input type="radio" value="Buy" name="currency" onChange={changeHandler} checked={tradingOption === 'Buy'} /> Buy</div>
@@ -113,7 +163,7 @@ export default function ListOfCurrencies(props) {
 
 
                         </div>
-                        <button className='button' onClick={clickHandler}>{tradingOption}</button>
+                        <button className='button ' disabled={disabled} onClick={clickHandler}>{tradingOption}</button>
 
                     </div>
                 </div>

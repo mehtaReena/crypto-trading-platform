@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { ViewContext } from '../contexts/CryptoContext';
 
 function CurrencyCard(props) {
@@ -29,7 +29,7 @@ function CurrencyCard(props) {
             </div>
             <div className='card-info'   >
 
-                <h3> {(props.currentPrice).toFixed(5)}</h3>
+                <h3> {(props.currentPrice)}</h3>
                 <h4>{props.name}   </h4>
                 <p className ='percentageChange' style={{color: theme}}> last24h {(props.percentageChange).toFixed(5) }</p>
 
