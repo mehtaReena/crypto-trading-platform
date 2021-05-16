@@ -4,7 +4,9 @@ import { ViewContext } from '../contexts/CryptoContext';
 function CurrencyCard(props) {
 
     const {disable} = useContext(ViewContext);
-    let[   disableCard ,setDisableCard  ]=disable;
+    let[disableCard ,setDisableCard  ]=disable;
+    let theme='transparent'
+     props.percentageChange >0 ?theme= 'green' : theme='red'
 
     function clickHandler(){
 
@@ -29,7 +31,7 @@ function CurrencyCard(props) {
 
                 <h3> {(props.currentPrice).toFixed(5)}</h3>
                 <h4>{props.name}   </h4>
-                <p> last24h {(props.percentageChange).toFixed(5)}</p>
+                <p style={{color: theme}}> last24h {(props.percentageChange).toFixed(5) }</p>
 
 
             </div>
