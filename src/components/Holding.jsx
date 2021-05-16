@@ -6,7 +6,7 @@ export default function Holding({coin, data}){
         <div className="holding">
             <p>{coin.name}: {coin.currentHolding}</p>
             <p>Total Paid: {coin.paid}, Current Value: {currentValue}</p>
-            <p>P/L : ${profit}{profit>0?'🔺':profit<0?'🔻':'〰'}</p>
+            <p>P/L : ${profit.toFixed(2)}{profit>0?'🔺':profit<0?'🔻':'〰'}</p>
         </div>
     )
 }

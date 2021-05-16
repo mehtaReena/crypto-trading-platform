@@ -54,7 +54,7 @@ export default function ListOfCurrencies(props) {
             changeWallet(wallet - qty * currPrice);
             let newTransaction = [...transactions]
 
-            newTransaction.push({ name: currency, qty: qty, currentPrice: currPrice, transactiontype: tradingOption.toLowerCase(), value: 24.5, timeStamp: Date.now() });
+            newTransaction.push({ name: currency, qty: qty, currentPrice: currPrice, transactionType: tradingOption.toLowerCase(), value: 24.5, timeStamp: Date.now() });
             changeTransactions(newTransaction);
         }
 
