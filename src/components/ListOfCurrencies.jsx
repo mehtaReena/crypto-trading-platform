@@ -11,7 +11,7 @@ export default function ListOfCurrencies(props) {
     const { disable } = useContext(ViewContext);
     let [currency, setCurrName] = useState('');
     let [qty, setQty] = useState(0);
-    let [currPrice, setCurrPrice] = useState('');
+    let [currPrice, setCurrPrice] = useState(0);
     let [tradingOption, setTradingOption] = useState('Buy');
     let [view, setView] = dialog;
     let [background, setbg] = disable;
@@ -42,7 +42,9 @@ export default function ListOfCurrencies(props) {
     function changeInput(e) {
         setMax(e.target.nextElementSibling.innerHTML)
         setQty(e.target.value)
-        if(qty>maxValue){
+
+        if(e.target.value < e.target.nextElementSibling.innerHTML){
+            console.log("   setdisabled  "+   qty , maxValue)
             setdisabled(true)
         }
 
@@ -55,7 +57,7 @@ export default function ListOfCurrencies(props) {
 
     function clickHandler() {
         if (tradingOption === 'Buy') {
-            let newTransaction = { name: currency, qty: qty, currentPrice: currPrice, transactiontype: tradingOption.toLowerCase(), value: (qty * currPrice).toFixed(2), timeStamp: Date.now() }
+            let newTransaction = { name: currency, qty: qty, currentPrice: currPrice, transactiontype: tradingOption.toLowerCase(), value: Number((qty * currPrice)).toFixed(2), timeStamp: Date.now() }
             changeWallet(wallet - qty * currPrice);
             let currTransaction = [...transactions];
             currTransaction.push(newTransaction);
@@ -163,7 +165,7 @@ export default function ListOfCurrencies(props) {
 
 
                         </div>
-                        <button className='button ' disabled={disabled} onClick={clickHandler}>{tradingOption}</button>
+                        <button className='button ' /* disabled={disabled} */ onClick={clickHandler}>{tradingOption}</button>
 
                     </div>
                 </div>
