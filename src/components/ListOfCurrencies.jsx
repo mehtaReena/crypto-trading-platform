@@ -17,7 +17,7 @@ export default function ListOfCurrencies(props) {
     let [background, setbg] = disable;
     let[disabled,setdisabled]=useState(false);
 
-     let[maxValue,setMax]=useState('')
+     let[maxValue,setMax]=useState(0)
 
 
 
@@ -34,17 +34,21 @@ export default function ListOfCurrencies(props) {
         setView('none');
         setbg(false);
         setQty(0);
+        setdisabled(false);
 
     }
     function changeHandler(e) {
         setTradingOption(e.target.value);
     }
     function changeInput(e) {
-        setMax(e.target.nextElementSibling.innerHTML)
+
+        let max= (e.target.nextElementSibling.innerHTML).split(':')
+        setMax(max[1]);
         setQty(e.target.value)
 
-        if(e.target.value < e.target.nextElementSibling.innerHTML){
-            console.log("   setdisabled  "+   qty , maxValue)
+
+        if(Number(e.target.value) > max[1]){
+            console.log("   setdisabled  "+   e.target.value  ,max[1])
             setdisabled(true)
         }
 
@@ -165,7 +169,7 @@ export default function ListOfCurrencies(props) {
 
 
                         </div>
-                        <button className='button ' /* disabled={disabled} */ onClick={clickHandler}>{tradingOption}</button>
+                        <button className='button '  disabled={disabled} onClick={clickHandler}>{tradingOption}</button>
 
                     </div>
                 </div>
