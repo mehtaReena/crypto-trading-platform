@@ -41,10 +41,11 @@ export default function ListOfCurrencies(props) {
         setTradingOption(e.target.value);
     }
     function changeInput(e) {
+        setdisabled(false)
 
         let max= (e.target.nextElementSibling.innerHTML).split(':')
         setMax(max[1]);
-        setQty(e.target.value)
+        setQty(Number(e.target.value))
 
 
         if(Number(e.target.value) > max[1]){
