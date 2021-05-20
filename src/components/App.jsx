@@ -12,7 +12,7 @@ export default function App(props) {
     let [display, setDisplay] = useState('none');
     let [isdisable , setDisble]=useState(false)
     let [transactions, setTransactions] = useState([{name: 'Bitcoin', qty: 0.0005, currentPrice: 49000, transactionType: 'buy', value: 24.5, timeStamp: Date.now()}])  //{proforma for individual value: {name: , qty: , currentPrice: , transactiontype: , value: , timeStamp:}
-    let [portfolio, setPortfolio] = useState([{ name: 'Bitcoin', currentHolding: 1, paid: 0 }, { name: 'Ethereum', currentHolding: 0, paid: 0 }, { name: 'Dogecoin', currentHolding: 0, paid: 0 }])
+    let [portfolio, setPortfolio] = useState([{ name: 'Bitcoin', currentHolding: 0, paid: 0 }, { name: 'Ethereum', currentHolding: 0, paid: 0 }, { name: 'Dogecoin', currentHolding: 0, paid: 0 }])
 
     useEffect(() => {
         let intervalId = setInterval(() => { getData() }, 10000)
