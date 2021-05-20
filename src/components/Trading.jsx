@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { CryptoContext, ViewContext } from "../contexts/CryptoContext";
 
 
@@ -16,6 +16,7 @@ function Trading({currPrice,currency}) {
     let[disabled,setdisabled]=useState(false);
 
      let[maxValue,setMax]=useState(0)
+     let inputRef=useRef();
 
 
 
@@ -30,11 +31,10 @@ function Trading({currPrice,currency}) {
         setTradingOption(e.target.value);
     }
     function changeInput(e) {
-        setdisabled(false)
-
+        //setdisabled(false)
         let max = (e.target.nextElementSibling.innerHTML).split(':')
         setMax(max[1]);
-        setQty(Number(e.target.value))
+        setQty(Number(inputRef.current.value))
 
 
         // if (Number(e.target.value) > max[1]) {
@@ -46,10 +46,28 @@ function Trading({currPrice,currency}) {
     }
 
     useEffect(()=>{
-        qty>maxValue ?setdisabled(true)  : setdisabled(false)
+        // if(tradingOption==='Buy')
+        console.log(maxValue , qty, inputRef.current.value)
+        qty>maxValue ||  Number(qty) <=0 ?setdisabled(true)  : setdisabled(false)
+        // else if(tradingOption==='Sell'){
+
+        //     qtymaxValue && qty <=0 ?setdisabled(true)  : setdisabled(false)
+        // }
 
     },[qty])
 
+     useEffect(()=>{
+         if(view==='none'){
+            inputRef.current.value=0;
+            setQty(Number( inputRef.current.value));
+            setTradingOption('Buy');
+
+         }
+         else{
+
+         }
+
+     },[view])
 
 
 
@@ -135,8 +153,8 @@ function Trading({currPrice,currency}) {
                 </div>
                 <div className='dialog-content'>
                     <span> Current price: {currPrice}</span>
-                    <div className='number-input'><input type="number" name="qty" id="qty" min="0" value={qty === 0 ? '' : qty} step="1" onChange={changeInput} />
-                        <span id='max'> Max: {tradingOption === 'Buy' ? (wallet / currPrice).toFixed(6) : portfolio.filter(coin => coin.name === currency)[0].currentHolding}
+                    <div className='number-input'><input type="number" name="qty" id="qty" min="0"  ref={inputRef}/* value={qty === 0 ? 0 : qty} */ step="1" onChange={changeInput} />
+                        <span id='max' onClick={()=>inputRef.current.value=Number(maxValue)}> Max: {tradingOption === 'Buy' ? (wallet / currPrice).toFixed(6) : portfolio.filter(coin => coin.name === currency)[0].currentHolding}
 
                         </span></div>
                     <div className='message'><span>{tradingOption === 'Buy' ? ' you will be charged $' : 'you will received $'} </span> {Number(qty * currPrice).toFixed(2)}</div>
