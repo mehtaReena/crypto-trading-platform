@@ -2,22 +2,23 @@ import { useContext, useState } from "react"
 /* import CryptoContext from '../contexts/CryptoContext' */
 import CurrencyCard from "./CurrencyCard";
 import { CryptoContext, ViewContext } from '../contexts/CryptoContext';
+import Trading from "./Trading";
 
 
 export default function ListOfCurrencies(props) {
 
     let { data, wallet, changeWallet, portfolio, changePortfolio, transactions, changeTransactions } = useContext(CryptoContext);
     const { dialog } = useContext(ViewContext);
-    const { disable } = useContext(ViewContext);
+    //     const { disable } = useContext(ViewContext);
     let [currency, setCurrName] = useState('');
-    let [qty, setQty] = useState(0);
+    //     let [qty, setQty] = useState(0);
     let [currPrice, setCurrPrice] = useState(0);
-    let [tradingOption, setTradingOption] = useState('Buy');
+    //     let [tradingOption, setTradingOption] = useState('Buy');
     let [view, setView] = dialog;
-    let [background, setbg] = disable;
-    let[disabled,setdisabled]=useState(false);
+    //    // let [background, setbg] = disable;
+    //     let[disabled,setdisabled]=useState(false);
 
-     let[maxValue,setMax]=useState(0)
+    //      let[maxValue,setMax]=useState(0)
 
 
 
@@ -26,11 +27,11 @@ export default function ListOfCurrencies(props) {
         setView('flex');
         setCurrName(currency);
         setCurrPrice(currPrice);
-        setbg(true)
+        //setbg(true)
 
 
     }
-    function closedialog() {
+    /* function closedialog() {
         setView('none');
         setbg(false);
         setQty(0);
@@ -126,7 +127,7 @@ export default function ListOfCurrencies(props) {
 
 
     }
-
+ */
 
     return (
 
@@ -147,7 +148,7 @@ export default function ListOfCurrencies(props) {
 
                 )
             }
-            <div className='dialogWrapper' style={{ display: view }}>
+            {/* <div className='dialogWrapper' style={{ display: view }}>
 
                 <div className='dialogbox' >
                     <div className='dialog-header'>
@@ -158,7 +159,7 @@ export default function ListOfCurrencies(props) {
                     </div>
                     <div className='dialog-content'>
                         <span> Current price: {currPrice}</span>
-                        <div className='number-input'><input type="number" name="qty" id="qty" min="0" value={qty} step="1" onChange={changeInput} />
+                        <div className='number-input'><input type="number" name="qty" id="qty" min="0" value={qty===0?'':qty} step="1" onChange={changeInput} />
                         <span id='max'> Max: {tradingOption === 'Buy' ? (wallet / currPrice).toFixed(6) : portfolio.filter(coin => coin.name === currency)[0].currentHolding}
 
                         </span></div>
@@ -176,7 +177,11 @@ export default function ListOfCurrencies(props) {
                 </div>
 
 
-            </div>
+            </div> */}
+            <Trading
+             currency={currency}
+             currPrice={currPrice}
+            />
         </div>
     )
 }
