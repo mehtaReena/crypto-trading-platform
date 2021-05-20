@@ -195,14 +195,15 @@ input[type=number]::-webkit-inner-spin-button {
 
   }
 
-  .button:hover {
+  .active:hover {
     transform: scale(1.1);
     cursor: pointer;
     background-color: #2E2E2E;
 }
 
+
 .message{
-    font-size: 9px
+    font-size: 9px;
 }
 .close{
     padding-right: 7px;

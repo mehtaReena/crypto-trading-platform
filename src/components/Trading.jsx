@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CryptoContext, ViewContext } from "../contexts/CryptoContext";
 
 
@@ -37,13 +37,18 @@ function Trading({currPrice,currency}) {
         setQty(Number(e.target.value))
 
 
-        if (Number(e.target.value) > max[1]) {
-            console.log("   setdisabled  " + e.target.value, max[1])
-            setdisabled(true)
-        }
+        // if (Number(e.target.value) > max[1]) {
+        //     console.log("   setdisabled  " + e.target.value, max[1])
+        //     setdisabled(true)
+        // }
 
 
     }
+
+    useEffect(()=>{
+        qty>maxValue ?setdisabled(true)  : setdisabled(false)
+
+    },[qty])
 
 
 
@@ -142,7 +147,7 @@ function Trading({currPrice,currency}) {
 
 
                     </div>
-                    <button className='button ' disabled={disabled} onClick={clickHandler}>{tradingOption}</button>
+                    <button className= {disabled ?'button' : 'button active' } disabled={disabled} onClick={clickHandler}>{tradingOption}</button>
 
                 </div>
             </div>
